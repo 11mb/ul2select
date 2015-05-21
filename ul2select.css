@@ -1,0 +1,23 @@
+/* ---- UL2SELECT LIST STYLING */
+
+ul.ul2select { display: inline-block; position: relative; z-index: 2; width: 250px; margin: 0; padding: 0; background: #FFF; outline: none; border: 1px solid #DDD; list-style: none; }
+ul.ul2select li { z-index: 2; line-height: 3.9em; padding: 0; font-size: 14px; text-transform: uppercase; font-weight: 700; color: #222; text-indent: 10px; list-style: none; }
+ul.ul2select li:before { display: none; }
+ul.ul2select li label { display: block; padding: 10px 0; line-height: 2.1em; cursor: pointer; }
+ul.ul2select li input { display: none; }
+ul.ul2select li.init:after { font-size: 16px; top: 17px; color: #DDD; }
+ul.ul2select li:not(.init) { width: 100%; float: left; display: none; background: #FFF; cursor: pointer;}
+ul.ul2select.open { position: relative; z-index: 1000; background: #FFF; }
+ul.ul2select.open li:not(.init) { display: block }
+ul.ul2select li:not(.init):hover,
+ul.ul2select li.selected:not(.init) { background: #333; color: #FFF; }
+ul.ul2select li:not(.init):hover label,
+ul.ul2select li.selected:not(.init) label,
+ul.ul2select li:not(.init):hover span,
+ul.ul2select li.selected:not(.init) span { background: #333; color: #FFF; }
+ul.ul2select li:not(.init) label:hover { color: #333;  }
+ul.ul2select li.init { background: #FFF; color: #333; cursor: pointer; }
+ul.ul2select li.init:after { content: '\e634'; position: absolute; right: 10px; top: 0; font-size: 20px; color: red; }
+ul.ul2select li.init label { line-height: 2.3em; color: #333; }
+ul.ul2select li.disabled label { background: #EEE; pointer-events: none; }
+ul.ul2select li.disabled label:hover { background: #EEE; pointer-events: none; }

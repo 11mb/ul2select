@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ul2select</title>
+
+    <link rel="stylesheet" href="ul2select.css" media="all">
+
+  </head>
+  <body>
+
+  <h2>Basic example</h2>
+  <ul id="demo_basic" class="demo">
+    <li data-value="option_1">
+      <span>Option 1</span>
+    </li>
+    <li data-value="option_2">
+      <span>Option 2</span>
+    </li>
+  </ul>
+
+  <h2>Custom title</h2>
+  <ul id="demo_customtitle" class="demo">
+    <li>
+      <label><span>Option 1</span></label>
+      <input class="hidden" type="radio" name="choise" value="option_1" />
+    </li>
+    <li>
+      <label><span>Option 2</span></label>
+      <input class="hidden" type="radio" name="choise" value="option_2" />
+    </li>
+  </ul>
+
+  <h2>With links</h2>
+  <ul id="demo_links" class="demo">
+    <li>
+      <a href="http://www.google.nl">Google.nl</a>
+    </li>
+    <li>
+      <a href="http://www.nu.nl">Nu.nl</a>
+    </li>
+  </ul>
+
+  <h2>With radios</h2>
+  <ul id="demo_radios" class="demo">
+    <li>
+      <label><span>Option 1</span></label>
+      <input class="hidden" type="radio" name="choise" value="option_1" />
+    </li>
+    <li>
+      <label><span>Option 2</span></label>
+      <input class="hidden" type="radio" name="choise" value="option_2" />
+    </li>
+  </ul>
+
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+  <script src="jquery.ul2select.js"></script>
+  <script type="text/javascript">
+   function autorun()
+   {
+      $('#demo_basic').ul2select();
+      $('#demo_basic').change(function() {
+          console.log('basic ul changed, value: ' + $(this).data('value'));
+      });
+
+      $('#demo_customtitle').ul2select({
+          novalue: 'Make a choise'
+      });
+
+      $('#demo_links').ul2select({
+          type: 'a'
+      });
+
+      $('#demo_radios').ul2select();
+
+      $('#demo_radios').change(function() {
+          console.log($(this).data('value'));
+      });
+   }
+   if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+   else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+   else window.onload = autorun;
+  </script>
+ </body>
+</html>
