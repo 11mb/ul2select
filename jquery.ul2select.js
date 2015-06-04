@@ -6,7 +6,8 @@
     $.fn.ul2select = function (settings) {
         settings = $.extend({
             novalue: 'Maak uw keuze',
-            type: ''
+            type: '',
+            required: false,
         }, settings);
 
         /**
@@ -15,7 +16,7 @@
          *
          * @param li
          */
-        function selectLi(li) {
+        function selectLi(li, doTrigger) {
             $ul = li.parent('ul');
 
             $allOptions = $ul.children('li:not(.init)');
@@ -41,7 +42,19 @@
                 break;
             }
 
-            $ul.trigger('change');
+            if(doTrigger) {
+                $ul.trigger('change');
+            }
+        }
+
+        /**
+         *
+         */
+        function init(li) {
+            $ul = li.parent('ul');
+
+            clonedli = li.clone().prependTo($ul).removeClass('active');
+            clonedli.addClass('init');
         }
 
         return this.each(
@@ -55,26 +68,29 @@
                 $ul.attr('tabindex', 0);
 
                 // set 'title'
-                if(settings.novalue != false) {
-                    $ul.prepend('<li class="init selected">' + settings.novalue + '</li>');
+                $selected = $ul.find('li.selected');
+                if($selected.length == 1) {
+                    init($selected);
+                    $selected.addClass('selected');
                 } else {
-                    if($selected.length == 1) {
-                        // move active item to the top
-                        $init = $selected.clone();
-                        $init.prependTo($ul).removeClass('active');
-                        $init.addClass('init');
-                        $selected.addClass('selected');
+                    if(settings.novalue != false) {
+                        $ul.prepend('<li class="init selected">' + settings.novalue + '</li>');
                     } else {
-                        $ul.find('li').first().addClass('init');
+                      init($ul.find('li').first());
                     }
                 }
 
+                if(settings.required === false && settings.novalue !== false) {
+                  $('<li class="">' + settings.novalue + '</li>').insertAfter($ul.find('li.init'));
+                }
+
+                // preselect value
         				var data = $ul.data('value');
         				if(data) {
         					$ul.find('li').each(
         						  function() {
         								if($(this).data('value') == data) {
-        									selectLi($(this));
+        									selectLi($(this), false);
         								}
         						  }
         					);
@@ -90,7 +106,7 @@
 
                 // register click function on li's
                 $ul.on("click", "li:not(.init)", function() {
-                    selectLi($(this));
+                    selectLi($(this), true);
                 });
 
                 // register click function on li.init a
@@ -163,7 +179,7 @@
                             break;
                         case 13:
                             // user pressed 'enter'
-                            selectLi(selected);
+                            selectLi(selected, true);
                             break;
                     }
 

@@ -19,6 +19,16 @@
     </li>
   </ul>
 
+  <h2>No no-value</h2>
+  <ul id="no_novalue" class="demo">
+    <li data-value="option_1">
+      <span>Option 1</span>
+    </li>
+    <li data-value="option_2">
+      <span>Option 2</span>
+    </li>
+  </ul>
+
   <h2>Basic example, pre selected</h2>
   <ul id="demo_basic2" class="demo" data-value="option_2">
     <li data-value="option_1">
@@ -28,6 +38,27 @@
       <span>Option 2</span>
     </li>
   </ul>
+
+  <h2>Basic example, pre selected #2</h2>
+  <ul id="demo_basic3" class="demo">
+    <li data-value="option_1">
+      <span>Option 1</span>
+    </li>
+    <li data-value="option_2" class="selected">
+      <span>Option 2</span>
+    </li>
+  </ul>
+
+  <h2>Required</h2>
+  <ul id="demo_basic4" class="demo">
+    <li data-value="option_1">
+      <span>Option 1</span>
+    </li>
+    <li data-value="option_2">
+      <span>Option 2</span>
+    </li>
+  </ul>
+
 
   <h2>Custom title</h2>
   <ul id="demo_customtitle" class="demo">
@@ -76,7 +107,16 @@
           console.log('basic ul changed, value: ' + $(this).data('value'));
       });
 
-	  $('#demo_basic2').ul2select();
+      $('#no_novalue').ul2select({
+          novalue: false
+      });
+
+      $('#demo_basic2').ul2select();
+      $('#demo_basic3').ul2select();
+      $('#demo_basic4').ul2select({
+          novalue: 'This is a required select',
+          required: true
+      });
 
       $('#demo_customtitle').ul2select({
           novalue: 'Make a choise'
@@ -86,7 +126,9 @@
           type: 'a'
       });
 
-      $('#demo_radios').ul2select();
+      $('#demo_radios').ul2select({
+          type: 'input:radio'
+      });
 
       $('#demo_radios').change(function() {
           console.log($(this).data('value'));
