@@ -19,6 +19,16 @@
     </li>
   </ul>
 
+  <h2>Basic example, pre selected</h2>
+  <ul id="demo_basic2" class="demo" data-value="option_2">
+    <li data-value="option_1">
+      <span>Option 1</span>
+    </li>
+    <li data-value="option_2">
+      <span>Option 2</span>
+    </li>
+  </ul>
+
   <h2>Custom title</h2>
   <ul id="demo_customtitle" class="demo">
     <li>
@@ -65,6 +75,8 @@
       $('#demo_basic').change(function() {
           console.log('basic ul changed, value: ' + $(this).data('value'));
       });
+
+	  $('#demo_basic2').ul2select();
 
       $('#demo_customtitle').ul2select({
           novalue: 'Make a choise'

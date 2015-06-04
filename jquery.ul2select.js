@@ -47,15 +47,6 @@
         return this.each(
             function () {
                 var $ul = $(this);
-                var $selected = $ul.find('.active');
-
-                // $ul.find('li').each(
-                //   function() {
-                //     if(!$(this).find(settings.type).length) {
-                //       $(this).append($('<input type="radio" class="hidden" name="' + $(this).closest("ul").attr('id') + '" value="' + $(this).data('value') + '">'));
-                //     }
-                //   }
-                // );
 
                 // add default class
                 $ul.addClass('ul2select');
@@ -77,6 +68,17 @@
                         $ul.find('li').first().addClass('init');
                     }
                 }
+
+        				var data = $ul.data('value');
+        				if(data) {
+        					$ul.find('li').each(
+        						  function() {
+        								if($(this).data('value') == data) {
+        									selectLi($(this));
+        								}
+        						  }
+        					);
+        				}
 
                 // register click function on ul
                 $ul.on("click", ".init", function() {
