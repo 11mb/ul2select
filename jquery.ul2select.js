@@ -117,11 +117,12 @@
 
                 // register mouse-out function set timer to close list
                 // when user comes back, we keep the list open
-                $ul.on("mouseleave", "li", function() {
-                    $ul = $(this).parent('ul');
+                $ul.on("mouseleave", function() {
+                    $ul = $(this);
                     if(!$ul.hasClass('open')) {
                         return;
                     }
+
                     $ul.data('closing', true);
                     setTimeout(function() {
                        $ul.trigger('closeList');
