@@ -7,15 +7,16 @@ ul.ul2select li label { display: block; padding: 10px 0; line-height: 2.1em; cur
 ul.ul2select li input { display: none; }
 ul.ul2select li.init:after { font-size: 16px; top: 17px; color: #DDD; }
 ul.ul2select li:not(.init) { width: 100%; float: left; display: none; background: #FFF; cursor: pointer;}
+ul.ul2select li.disabled { cursor: default; text-decoration: line-through; color: #888; }
 ul.ul2select.open { position: relative; z-index: 1000; background: #FFF; }
 ul.ul2select.open li:not(.init) { display: block }
-ul.ul2select li:not(.init):hover,
-ul.ul2select li.selected:not(.init) { background: #333; color: #FFF; }
-ul.ul2select li:not(.init):hover label,
-ul.ul2select li.selected:not(.init) label,
-ul.ul2select li:not(.init):hover span,
-ul.ul2select li.selected:not(.init) span { background: #333; color: #FFF; }
-ul.ul2select li:not(.init) label:hover { color: #333;  }
+ul.ul2select li:not(.init):not(.disabled):hover,
+ul.ul2select li.selected:not(.init):not(.disabled) { background: #333; color: #FFF; }
+ul.ul2select li:not(.init):not(.disabled):hover label,
+ul.ul2select li.selected:not(.init):not(.disabled) label,
+ul.ul2select li:not(.init):not(.disabled):hover span,
+ul.ul2select li.selected:not(.init):not(.disabled) span { background: #333; color: #FFF; }
+ul.ul2select li:not(.init):not(.disabled) label:hover { color: #333;  }
 ul.ul2select li.init { background: #FFF; color: #333; cursor: pointer; }
 ul.ul2select li.init:after { content: '\e634'; position: absolute; right: 10px; top: 0; font-size: 20px; color: red; }
 ul.ul2select li.init label { line-height: 2.3em; color: #333; }

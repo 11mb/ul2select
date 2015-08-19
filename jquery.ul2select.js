@@ -17,6 +17,7 @@
          * @param li
          */
         function selectLi(li, doTrigger) {
+            if (li.hasClass('disabled')) return;
             $ul = li.parent('ul');
 
             $allOptions = $ul.children('li:not(.init)');
@@ -111,7 +112,7 @@
 
                 // register click function on li.init a
                 // preventing it to navigate
-                $ul.on("click", "li.init a", function(e) {
+                $ul.on("click", "li.init a, li.disabled a", function(e) {
                     e.preventDefault();
                 });
 
@@ -162,19 +163,19 @@
                     switch(e.keyCode) {
                         case 38:
                             // user pressed 'up'
-                            if (selected.prev().length == 0) {
+                            if (selected.prev(':not(.disabled)').length == 0) {
                                 selected.siblings().last().addClass("selected");
                             } else {
-                                selected.prev().addClass("selected");
+                                selected.prev(':not(.disabled)').addClass("selected");
                             }
 
                             break;
                         case 40:
                             // user pressed 'down'
-                            if (selected.next().length == 0) {
+                            if (selected.next(':not(.disabled)').length == 0) {
                                 selected.siblings().first().addClass("selected");
                             } else {
-                                selected.next().addClass("selected");
+                                selected.next(':not(.disabled)').addClass("selected");
                             }
 
                             break;

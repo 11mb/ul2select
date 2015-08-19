@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>ul2select</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="jquery.ul2select.js"></script>
     <link rel="stylesheet" href="ul2select.css" media="all">
 
   </head>
@@ -16,6 +17,19 @@
     </li>
     <li data-value="option_2">
       <span>Option 2</span>
+    </li>
+  </ul>
+
+  <h2>Basic example with disabled items</h2>
+  <ul id="demo_disabled" class="demo">
+    <li data-value="option_1">
+      <span>Option 1</span>
+    </li>
+    <li data-value="option_2">
+      <span>Option 2</span>
+    </li>
+    <li class="disabled" data-value="option_3">
+      <span>Option 3</span>
     </li>
   </ul>
 
@@ -105,6 +119,11 @@
       $('#demo_basic').ul2select();
       $('#demo_basic').change(function() {
           console.log('basic ul changed, value: ' + $(this).data('value'));
+      });
+
+      $('#demo_disabled').ul2select();
+      $('#demo_disabled').change(function() {
+          console.log('ul with disabled items changed, value: ' + $(this).data('value'));
       });
 
       $('#no_novalue').ul2select({
