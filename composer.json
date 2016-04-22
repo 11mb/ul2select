@@ -1,0 +1,11 @@
+{
+    "name": "11mb/ul2select",
+    "description": "A script to convert any ul/li into a selectbox",
+    "authors": [
+        {
+            "name": "William",
+            "email": "11mb.william@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"    
+}
