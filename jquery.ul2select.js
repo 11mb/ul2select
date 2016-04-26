@@ -62,6 +62,10 @@
             function () {
                 var $ul = $(this);
 
+                if($ul.hasClass('ul2select')) {
+                    return;
+                }
+
                 // add default class
                 $ul.addClass('ul2select');
 
