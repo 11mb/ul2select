@@ -39,7 +39,10 @@
                 break;
               case 'a':
                 // follow link, when pressed enter
-                window.location = li.find(settings.type).attr('href');
+                var target = li.find(settings.type).attr('href');
+                if(target !== undefined) {
+                  window.location = li.find(settings.type).attr('href');
+                }
                 break;
             }
 
