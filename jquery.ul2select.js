@@ -15,6 +15,7 @@
          * in the li
          *
          * @param li
+         * @param doTrigger
          */
         function selectLi(li, doTrigger) {
             if (li.hasClass('disabled')) return;
@@ -40,7 +41,8 @@
               case 'a':
                 // follow link, when pressed enter
                 var target = li.find(settings.type).attr('href');
-                if(target !== undefined) {
+
+                if(target !== undefined && doTrigger) {
                   window.location = li.find(settings.type).attr('href');
                 }
                 break;
