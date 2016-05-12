@@ -6,13 +6,13 @@
             "name": "William",
             "email": "11mb.william@gmail.com"
         },
-		{
-            "name": "Martijn Harte"
-			"homepage": "https://github.com/MartijnHarte"
+        {
+            "name": "Martijn Harte",
+            "homepage": "https://github.com/MartijnHarte"
         },
-		{
+        {
             "name": "Leon Boot",
-			"homepage": "https://github.com/leonboot"			
+            "homepage": "https://github.com/leonboot"
         }
     ],
 	"version": "1.0.2",
